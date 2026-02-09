@@ -1,1 +1,119 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Valentine Surprise</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{    margin:0;    height:100vh;    overflow:hidden;    background:linear-gradient(to bottom,#ff9a9e,#fad0c4);    font-family:Segoe UI,sans-serif;    text-align:center;}/* Floating Hearts */.heart{    position:fixed;    bottom:-10px;    font-size:22px;    animation:floatUp 6s linear infinite;}@keyframes floatUp{    to{transform:translateY(-100vh);opacity:0;}}/* WhatsApp-style bubble */.chat{    display:inline-block;    background:#dcf8c6;    padding:12px 18px;    border-radius:15px;    margin:20px;    font-size:18px;}h1{margin-top:80px;color:#b30059;}.btn{    padding:14px 35px;    font-size:18px;    border:none;    border-radius:10px;    cursor:pointer;}#yesBtn{background:#ff3366;color:#fff;}#noBtn{    background:#555;color:#fff;    position:absolute;}</style></head><body><!-- Romantic Music --><audio autoplay loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio><h1>Kodimalar 💕</h1><div class="chat">Will you be my Valentine? 💖</div><p>– Krishna Raj 💌</p><div id="message"></div><button id="yesBtn" class="btn" onclick="goYes()">Yes 💍</button><button id="noBtn" class="btn">No 🙈</button><script>// Floating heartssetInterval(()=>{ const h=document.createElement("div"); h.className="heart"; h.innerText="❤️"; h.style.left=Math.random()*100+"vw"; document.body.appendChild(h); setTimeout(()=>h.remove(),6000);},300);// No button logicconst messages=[ "Please think it 💭", "I am yours ❤️", "Please consider me 🥺"];let i=0;const noBtn=document.getElementById("noBtn");const msg=document.getElementById("message");moveNo();noBtn.addEventListener("mouseenter",()=>{ moveNo(); if(i<messages.length){msg.innerText=messages[i++];}});function moveNo(){ noBtn.style.left=Math.random()*(innerWidth-120)+"px"; noBtn.style.top=Math.random()*(innerHeight-120)+"px";}function goYes(){ alert("Kodimalar ❤️\nYou just made me the happiest person alive 💕"); window.location.href="yes.html";}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
+    font-family:Arial,sans-serif;
+    text-align:center;
+    overflow:hidden;
+}
+
+h1{margin-top:90px;color:#b30059;}
+
+.buttons{
+    margin-top:40px;
+    position:relative;
+}
+
+.btn{
+    padding:14px 32px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:transform 0.3s;
+}
+
+#yesBtn{
+    background:#ff3366;
+    color:white;
+}
+
+#noContainer{
+    display:inline-block;
+    position:absolute;
+    margin-left:20px;
+}
+
+#noBtn{
+    background:#555;
+    color:white;
+}
+
+#msg{
+    margin-top:8px;
+    font-size:17px;
+    color:#800040;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Kodimalar 💕</h1>
+<h2>Will you be my Valentine?</h2>
+<p>– Krishna Raj 💌</p>
+
+<div class="buttons">
+    <button id="yesBtn" class="btn" onclick="goYes()">Yes 💖</button>
+
+    <div id="noContainer">
+        <button id="noBtn" class="btn">No 🙈</button>
+        <div id="msg"></div>
+    </div>
+</div>
+
+<script>
+const messages=[
+ "யோசிச்சு பாரு 💭",
+ "நான் உன்னோடே தான் ❤️",
+ "ஒரு வாய்ப்பு குடு 🥺"
+];
+
+let i=0;
+let noScale=1;
+let yesScale=1;
+
+const noContainer=document.getElementById("noContainer");
+const msg=document.getElementById("msg");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+
+noContainer.addEventListener("click",()=>{
+    moveNo();
+
+    if(i<messages.length){
+        msg.innerText=messages[i++];
+    }
+
+    // NO becomes smaller
+    noScale -= 0.15;
+    noBtn.style.transform = `scale(${noScale})`;
+
+    // YES becomes bigger
+    yesScale += 0.15;
+    yesBtn.style.transform = `scale(${yesScale})`;
+});
+
+function moveNo(){
+    const x=Math.random()*(innerWidth-200);
+    const y=Math.random()*(innerHeight-200);
+    noContainer.style.position="fixed";
+    noContainer.style.left=x+"px";
+    noContainer.style.top=y+"px";
+}
+
+function goYes(){
+    window.location.href="yes.html";
+}
+</script>
+
+</body>
+</html>
