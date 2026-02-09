@@ -11,14 +11,24 @@ body{
     height:100vh;
     background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
     font-family:Arial,sans-serif;
-    text-align:center;
     overflow:hidden;
+
+    /* CENTER EVERYTHING */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-h1{margin-top:90px;color:#b30059;}
+/* Center container */
+.container{
+    position:relative;
+}
+
+h1{color:#b30059;}
 
 .buttons{
-    margin-top:40px;
+    margin-top:30px;
     position:relative;
 }
 
@@ -57,24 +67,29 @@ h1{margin-top:90px;color:#b30059;}
 
 <body>
 
-<h1>Kodimalar 💕</h1>
-<h2>Will you be my Valentine?</h2>
-<p>– Krishna Raj 💌</p>
+<div class="container">
 
-<div class="buttons">
-    <button id="yesBtn" class="btn" onclick="goYes()">Yes 💖</button>
+    <h1>KODIMALAR 💕</h1>
+    <h2>Will you be my Valentine?</h2>
+    <p>– Krishna Raj 💌</p>
 
-    <div id="noContainer">
-        <button id="noBtn" class="btn">No 🙈</button>
-        <div id="msg"></div>
+    <div class="buttons">
+        <button id="yesBtn" class="btn" onclick="goYes()">Yes 💖</button>
+
+        <div id="noContainer">
+            <button id="noBtn" class="btn">No</button>
+            <div id="msg"></div>
+        </div>
     </div>
+
 </div>
 
 <script>
 const messages=[
- "யோசிச்சு பாரு 💭",
- "நான் உன்னோடே தான் ❤️",
- "ஒரு வாய்ப்பு குடு 🥺"
+ "Please don't do this 💭",
+ "I am yours ❤️",
+ "Please no 🙏",
+ "Sorry, you can't select NO 😆"
 ];
 
 let i=0;
